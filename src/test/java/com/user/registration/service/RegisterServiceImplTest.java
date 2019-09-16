@@ -1,4 +1,4 @@
-package com.user.registration;
+package com.user.registration.service;
 
 import static org.junit.Assert.assertEquals;
 
