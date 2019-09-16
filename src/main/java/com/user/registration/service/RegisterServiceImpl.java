@@ -32,10 +32,15 @@ public class RegisterServiceImpl implements RegisterService {
 		user.setMobile(userRequestDto.getUserMobile());
 		user.setUserName(userRequestDto.getUserName());
 		Optional<User> user1 = userRepository.findByUserName(user.getUserName());
+		Optional<User> user2 = userRepository.findByMobile(user.getUserName());
 		UserResponseDto userResponseDto = new UserResponseDto();
 		if (user1.isPresent()) {
 			throw new UserRegistrationException(UserRegistrationConstants.USER_ALREADY_EXISTS);
 
+		}
+		if(user2.isPresent())
+		{
+			throw new UserRegistrationException(UserRegistrationConstants.USER_MOBILE_ALREADY_EXISTS);
 		}
 		if (user.getUserName() == "" || user.getMobile() == "") {
 			throw new UserRegistrationException(UserRegistrationConstants.EMPTY_CREDENTIALS);
