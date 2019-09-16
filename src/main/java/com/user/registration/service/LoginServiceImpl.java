@@ -33,7 +33,7 @@ public class LoginServiceImpl implements LoginService {
 		String password = loginDTO.getPassword();
 
 		LoginResponseDTO loginResponseDTO = new LoginResponseDTO();
-		UserRegistrationConstants userRegistrationConstants=new UserRegistrationConstants();
+	
 		if (userName.equals("") || password.equals("")) {
 
 			throw new UserRegistrationException(UserRegistrationConstants.EMPTY_CREDENTIALS);
